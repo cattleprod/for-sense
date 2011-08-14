@@ -337,8 +337,8 @@ MODFLAGS	= -DMODULE
 CFLAGS_MODULE   = $(MODFLAGS) -mtune=cortex-a8 -mfpu=vfpv3
 AFLAGS_MODULE   = $(MODFLAGS)
 LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
-CFLAGS_KERNEL	= -mtune=cortex-a8 -mfpu=vfpv3 -floop-flatten -ftree-vectorize -funsafe-math-optimizations -fsingle-precision-constant 
-AFLAGS_KERNEL	= -mtune=cortex-a8 -mfpu=vfpv3 -floop-flatten -ftree-vectorize -funsafe-math-optimizations -fsingle-precision-constant 
+CFLAGS_KERNEL	= -mtune=cortex-a8 -mfpu=neon -floop-flatten -ftree-vectorize -funsafe-math-optimizations -fsingle-precision-constant 
+AFLAGS_KERNEL	= -mtune=cortex-a8 -mfpu=neon -floop-flatten -ftree-vectorize -funsafe-math-optimizations -fsingle-precision-constant 
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 
@@ -531,9 +531,9 @@ endif # $(dot-config)
 all: vmlinux
 
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
-KBUILD_CFLAGS	+= -Os
-else
 KBUILD_CFLAGS	+= -O1
+else
+KBUILD_CFLAGS	+= -O2
 endif
 
 include $(srctree)/arch/$(SRCARCH)/Makefile
