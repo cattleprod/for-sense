@@ -38,6 +38,7 @@
 #define SCHED_BATCH		3
 /* SCHED_ISO: reserved but not implemented yet */
 #define SCHED_IDLE		5
+#define SCHED_IDLEPRIO SCHED_IDLE
 /* Can be ORed in to make sure the process is reverted back to SCHED_NORMAL on fork */
 #define SCHED_RESET_ON_FORK     0x40000000
 
@@ -1522,6 +1523,9 @@ static inline void sched_wake_interactive_disable(void)
 {
 	current->sched_wake_interactive--;
 }
+
+/* CFS */
+extern int above_background_load(void);
 
 /* Future-safe accessor for struct task_struct's cpus_allowed. */
 #define tsk_cpus_allowed(tsk) (&(tsk)->cpus_allowed)
