@@ -337,8 +337,8 @@ MODFLAGS	= -DMODULE
 CFLAGS_MODULE   = $(MODFLAGS) -mtune=cortex-a8 -mfpu=vfpv3
 AFLAGS_MODULE   = $(MODFLAGS)
 LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
-CFLAGS_KERNEL	= -mtune=cortex-a8 -mfpu=vfpv3 -floop-interchange -floop-strip-mine -floop-block -ffast-math -fsingle-precision-constant -funsafe-loop-optimizations
-AFLAGS_KERNEL	= -mtune=cortex-a8 -mfpu=vfpv3 -floop-interchange -floop-strip-mine -floop-block -ffast-math -fsingle-precision-constant -funsafe-loop-optimizations
+CFLAGS_KERNEL	= -mtune=cortex-a8 -mfpu=vfpv3 -floop-flatten -ftree-vectorize -funsafe-math-optimizations -fsingle-precision-constant 
+AFLAGS_KERNEL	= -mtune=cortex-a8 -mfpu=vfpv3 -floop-flatten -ftree-vectorize -funsafe-math-optimizations -fsingle-precision-constant 
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 
